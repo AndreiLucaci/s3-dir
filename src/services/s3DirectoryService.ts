@@ -3,11 +3,11 @@ import { Folder } from '../models';
 import { DEFAUL_S3_PATH_SEPARATOR } from './constants';
 
 export interface IS3DirectoryService {
-  processDirectoryStructure(objects?: S3.Object[]): Folder;
+  toDir(objects?: S3.Object[]): Folder;
 }
 
 export class S3DirectoryService implements IS3DirectoryService {
-  processDirectoryStructure(objects?: S3.Object[]): Folder {
+  toDir(objects?: S3.Object[]): Folder {
     try {
       const rootFolder: Folder = new Folder();
 
