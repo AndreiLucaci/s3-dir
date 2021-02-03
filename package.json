@@ -8,13 +8,14 @@
     "lib/**/*"
   ],
   "scripts": {
-    "test": "jest --config jestconfig.json",
+    "test": "tsc && jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "build": "tsc",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
+    "debug": "node --debug-brk --inspect ./node_modules/jest/bin/jest -i",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
@@ -41,5 +42,21 @@
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.168",
+    "aws-sdk": "^2.835.0",
+    "lodash": "^4.17.20"
+  },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/?(*.)(spec|test).js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ]
   }
 }
