@@ -20,7 +20,7 @@ class S3ObjectMock implements S3.Object {
 }
 
 test('undefined objects generates empty root folder', () => {
-  const result = s3Dir.processDirectoryStructure(undefined);
+  const result = s3Dir.toDir(undefined);
 
   const rootFolder: Folder = new Folder();
 
@@ -28,7 +28,7 @@ test('undefined objects generates empty root folder', () => {
 });
 
 test('empty s3Dir objects generates empty root folder', () => {
-  const result = s3Dir.processDirectoryStructure([]);
+  const result = s3Dir.toDir([]);
 
   const rootFolder: Folder = new Folder();
 
@@ -45,7 +45,7 @@ test('folder structure with one S3 object', () => {
   rootFolder.folders = [firstLevelFolder];
   firstLevelFolder.folders = [secondLevelFolder];
 
-  const result = s3Dir.processDirectoryStructure(input);
+  const result = s3Dir.toDir(input);
 
   expect(result).toEqual(rootFolder);
 });
@@ -80,7 +80,7 @@ test('folder structure with multiple S3 object', () => {
   secondLevelFolder3.addObject(input[4]);
   secondLevelFolder4.addObject(input[5]);
 
-  const result = s3Dir.processDirectoryStructure(input);
+  const result = s3Dir.toDir(input);
 
   const json = result.toJson();
   const obj = result.toObject();
