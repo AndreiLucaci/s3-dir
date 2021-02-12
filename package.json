@@ -1,6 +1,6 @@
 {
   "name": "s3-dir",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small utility function to display AWS S3 objects in a tree/folder like structured way",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
